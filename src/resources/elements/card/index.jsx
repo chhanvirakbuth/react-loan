@@ -13,6 +13,7 @@ const useStyles = makeStyles({
         cursor : "pointer",
         borderRadius : '5px',
         width  : "100%",
+        textAlign: 'center',
         "&:hover" : {
             color : "#3f51b5"
         }

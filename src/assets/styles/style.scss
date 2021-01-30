@@ -20,15 +20,17 @@ body{
 }
 
 //custom style card of menu
-.MuiCardContent-root{
-  text-align: center;
-}
 
 .text-underline{
   text-decoration: underline;
 }
 
-//table
+//stepper label
+.MuiStepLabel-label{
+  font-family: Kh-Battambang!important;
+}
+
+  //table
 .MuiTable-root{
   .MuiTableHead-root{
     .MuiTableCell-head{
@@ -45,6 +47,9 @@ body{
   }
 }
 
+small{
+  color: #fa1863;
+}
 .border-radius-10{
   border-radius: 10px !important;
 }
