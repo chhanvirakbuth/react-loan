@@ -1,9 +1,12 @@
-import React from 'react';
+import React, {useState} from 'react';
+
 import { makeStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
+import { v4 as uuidv4 } from 'uuid';
+
 
 const useStyles = makeStyles((theme) => ({
     formControl: {
@@ -15,33 +18,41 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function SimpleSelect() {
+export default function SimpleSelect({ id , label , variant , required , handleChange, items , ...rest }) {
     const classes = useStyles();
-    const [age, setAge] = React.useState('');
-
-    const handleChange = (event) => {
-        setAge(event.target.value);
+    const [ value ,setValue ] = useState('');
+    const listItems = items.map((item) =>
+        // item code for location item id for default select
+        <MenuItem value={ item.code ? item.code : item.id } key={item.id}>{ item.name }</MenuItem>
+    );
+    const handleSelectChange = (event) => {
+        setValue(event.target.value);
+        handleChange( event )
     };
 
     return (
         <div>
-            <FormControl variant="outlined" className={classes.formControl}>
-                <InputLabel id="demo-simple-select-outlined-label">Age</InputLabel>
+            <FormControl required={required} variant={variant} className={classes.formControl}>
+                <InputLabel id={id}>{ label }</InputLabel>
                 <Select
-                    labelId="demo-simple-select-outlined-label"
-                    id="demo-simple-select-outlined"
-                    value={age}
-                    onChange={handleChange}
-                    label="Age"
+                    autoWidth={true}
+                    labelId={id}
+                    label={ label }
+                    { ...rest }
+                    value={value}
+                    onChange={handleSelectChange}
                 >
-                    <MenuItem value="">
-                        <em>None</em>
-                    </MenuItem>
-                    <MenuItem value={10}>Ten</MenuItem>
-                    <MenuItem value={20}>Twenty</MenuItem>
-                    <MenuItem value={30}>Thirty</MenuItem>
+                    { listItems }
                 </Select>
             </FormControl>
         </div>
     );
+}
+
+SimpleSelect.defaultProps = {
+    label   : "Label",
+    id      : uuidv4(),
+    variant : "outlined",
+    required: true,
+    items   : []
 }

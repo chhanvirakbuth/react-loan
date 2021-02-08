@@ -1,4 +1,5 @@
 const word = {
+    appbar_label                                : "ស្វាគមន៍សារជាថ្មី",
     home                                        : "មីនុយដើម",
     register                                    : "បង្កើត",
     registerAccount                             : "បើកគណនី",
@@ -18,7 +19,7 @@ const word = {
     registerDepositAccountLabel                 : "បើកគណនីសន្សំ",
     customerInfo                                : "បំពេញព័ត៍មានរបស់អតិថិជន",
     generalInfo                                 : "ព័ត៍មានទូទៅ",
-    address                                     : "អាសយដ្ធាន",
+    address                                     : "អាសយដ្ឋាន",
     finish                                      : "បញ្ចប់",
     firstName                                   : "នាមត្រកូល",
     lastName                                    : "នាមខ្លួន",
@@ -26,7 +27,23 @@ const word = {
     email                                       : "អ៊ីមែល",
     dateOfBirth                                 : "ថ្ងៃខែ​ឆ្នាំ​កំណើត",
     back                                        : "ថយក្រោយ",
-    next                                        : "បន្ទាប់"
+    next                                        : "បន្ទាប់",
+    sex                                         : "ភេទ",
+    idCard                                      : "លេខអត្តសញ្ញាណបណ្ណ",
+    idCardExpireDate                            : "អត្តសញ្ញាណផុតកំណត់",
+    occupation                                  : "មុខរបរ",
+    attachment                                  : "ឯកសារភ្ជាប់",
+    birthAddress                                : "ទីកន្លែងកំណើត",
+    currentAddress                              : "ទីលំនៅបច្ចុប្បន្ន",
+    personalInfo                                : "ព័ត៍មានផ្ទាល់ខ្លួន",
+    province                                    : "ខេត្ត/ក្រុង",
+    district                                    : "ស្រុក/ខណ្ឌ",
+    commune                                     : "ឃុំ/សង្កាត់",
+    village                                     : "ភូមិ",
+    reviewAndFinish                             : "ពិនិត្យ និង បញ្ចប់",
+    welcomeBack                                 : "ស្វាគមន៍ការត្រលប់មកវិញ",
+    password                                    : "ពាក្យសម្ងាត់",
+    signIn                                      : "ចូលប្រព័ន្ធ"
 }
 
 export default word;

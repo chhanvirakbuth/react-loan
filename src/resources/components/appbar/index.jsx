@@ -1,5 +1,5 @@
 // ((======= core import ========= ))
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 
 // ((======= library import ========= ))
 import { makeStyles } from '@material-ui/core/styles';
@@ -14,10 +14,12 @@ import Menu from '@material-ui/core/Menu';
 import Hidden from '@material-ui/core/Hidden';
 import { useHistory } from 'react-router-dom';
 import Divider from '@material-ui/core/Divider';
-
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import PersonOutlinedIcon from '@material-ui/icons/PersonOutlined';
 // ((======= custom import ========= ))
 import RoutePath from "../../../config/route-path";
 import word from "../../language/word";
+import AuthService from "../../../services/auth/service";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -34,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
     },
     toolbarMargin : theme.mixins.toolbar,
     menuItem : {
-        fontFamily : "Kh-Battambang"
+        fontFamily : "Kh-Battambang",
     }
 }));
 
@@ -42,11 +44,17 @@ export default function AppBarComponent() {
     const classes = useStyles();
     const history = useHistory();
     const [anchorEl, setAnchorEl] = React.useState(null);
+    const [ profile  ] = useState(AuthService.profile);
     const open = Boolean(anchorEl);
 
     const handleMenu = (event) => {
         setAnchorEl(event.currentTarget);
     };
+
+    const handleLogout = (  ) => {
+        AuthService.logout();
+        history.push(RoutePath.login);
+    }
 
     const handleClose = () => {
         setAnchorEl(null);
@@ -55,6 +63,10 @@ export default function AppBarComponent() {
     const redirectHome = () => {
         history.push( RoutePath.home );
     }
+
+    useEffect(() => {
+
+    });
 
     return (
         <div className={classes.root}>
@@ -66,10 +78,10 @@ export default function AppBarComponent() {
                         </IconButton>
                     </Hidden>
                     <Typography variant="h6" className={classes.title} onClick={redirectHome}>
-                        ធនាគារខ្នាតតូច
+                        { word.appbar_label }
                     </Typography>
                     <div>
-                        <span className="avatar-name">បុត្រ</span>
+                        <span className="avatar-name">{ profile.name }</span>
                         <IconButton
                             aria-label="account of current user"
                             aria-controls="menu-appbar"
@@ -94,14 +106,18 @@ export default function AppBarComponent() {
                             open={open}
                             onClose={handleClose}
                         >
-                            <MenuItem className={classes.menuItem} onClick={handleClose}>{ word.profile }</MenuItem>
+                            <MenuItem className={classes.menuItem} onClick={handleClose}>
+                                <PersonOutlinedIcon/>{ word.profile }
+                            </MenuItem>
                             <Divider/>
-                            <MenuItem className={classes.menuItem} onClick={handleClose}>{ word.logout }</MenuItem>
+                            <MenuItem className={classes.menuItem} onClick={handleLogout}>
+                                <ExitToAppIcon/>{ word.logout }
+                            </MenuItem>
                         </Menu>
                     </div>
                 </Toolbar>
             </AppBar>
-            <div className={classes.toolbarMargin}></div>
+            <div className={classes.toolbarMargin}/>
         </div>
     );
 }

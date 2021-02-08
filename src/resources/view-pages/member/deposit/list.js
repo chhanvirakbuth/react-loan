@@ -20,6 +20,9 @@ class ListDepositMember extends Component {
         this.state = {
             items : null,
         }
+
+        // event binding
+        this.getData = this.getData.bind( this );
     }
 
     componentDidMount() {
@@ -38,7 +41,7 @@ class ListDepositMember extends Component {
             if( items ){
                 return (
                     items.map(( item ) => (
-                      <TableRow className={`animate__animated animate__fadeIn`}>
+                      <TableRow key={item.id}>
                           <TableCell align="left">{item.title}</TableCell>
                           <TableCell align="left">{item.body}</TableCell>
                       </TableRow>

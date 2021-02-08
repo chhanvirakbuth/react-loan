@@ -12,6 +12,7 @@ const RoutePath = {
     extraLoan               : `${path}/extra-loan`,
     statisticReport         : `${path}/statistic-report`,
     settings                : `${path}/setting`,
+    login                   : `/espresso/auth/login`
 }
 
 export default RoutePath;
